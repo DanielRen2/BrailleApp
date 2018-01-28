@@ -8,6 +8,7 @@ import os, sys
 import http.client, urllib.request, urllib.parse, urllib.error, base64, requests, time, json
 from handwrittingAPI import *
 import reader as rd
+from sys import platform
 
 requestHeaders = {
     # Request headers.
@@ -37,7 +38,10 @@ class pyBraille:
         self.border_bottom = Label(master, text="")
         self.border_bottom.grid(row=11, column=0, columnspan = 4, pady=10)
         
-        self.photo = PhotoImage(file=os.path.dirname(os.path.realpath(__file__))+"/pyBrailleSmall.png")
+        if platform == 'win32':
+            self.photo = PhotoImage(file=os.path.dirname(os.path.realpath(__file__))+"/pyBrailleSmall.png")
+        elif platform == 'linux' or platform == 'linux2':
+            self.photo = PhotoImage(file=os.path.dirname(os.path.realpath(__file__))+"/pyBrailleSmall.gif")
         self.ppanel = Label(master, image = self.photo)
         self.ppanel.grid(row=0, column=0, rowspan = 10)
         
@@ -79,13 +83,17 @@ class pyBraille:
         self.entryBox.insert(END, self.defaultPath)
 
         # === Third Column
-        self.list_label = Label(master, text="Transcribable Files")
+        self.list_label = Label(master, text="Transcribed Files")
         self.list_label.grid(row=1,column=3,sticky=E+W, columnspan=2)
         
         self.button_refresh = ttk.Button(master, text = "Refresh Files", command = self.refresh, style = 'NuclearReactor.TButton')
         self.button_refresh.grid(row=2,column=3,sticky=N+S,columnspan=2)
         
+        self.scrollbar = Scrollbar()
+        self.scrollbar.grid(row=3, column=5, rowspan=6, sticky=N+S)
+        
         self.list_box = Listbox(master, selectmode=SINGLE)
+        self.list_box.config(yscrollcommand=self.scrollbar.set)
         self.list_box.grid(row=3,column=3,sticky=N+S+E+W,rowspan=6,padx=20,columnspan=2)
         
         self.hand = Radiobutton(master, text = "Handwriting", variable = t, value=1)
@@ -158,5 +166,8 @@ root = Tk()
 entryVar = StringVar()
 t = IntVar()
 my_gui = pyBraille(root)
-root.iconbitmap(os.path.dirname(os.path.realpath(__file__))+'/pyBraille.ico')
+if platform == 'win32' or platform == 'darwin':
+    root.iconbitmap(os.path.dirname(os.path.realpath(__file__))+'/pyBraille.ico')
+elif platform == 'linux' or platform == 'linux2':
+    root.iconbitmap("@" + os.path.dirname(os.path.realpath(__file__))+'/pyBraille.xbm')
 root.mainloop()
