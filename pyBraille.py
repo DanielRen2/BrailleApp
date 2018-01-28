@@ -7,18 +7,9 @@ from PIL import ImageTk, Image
 import os, sys
 import http.client, urllib.request, urllib.parse, urllib.error, base64, requests, time, json
 from handwrittingAPI import *
+from documentReaderAPI import *
 import reader as rd
 from sys import platform
-
-requestHeaders = {
-    # Request headers.
-    'Content-Type': 'application/octet-stream',
-
-    # NOTE: Replace the "Ocp-Apim-Subscription-Key" value with a valid subscription key.
-    'Ocp-Apim-Subscription-Key': 'a5ab297d53164f3c9f5d94f86bd4fc4e',
-}
-params = {'handwriting' : 'true'}
-uri_base = 'https://westcentralus.api.cognitive.microsoft.com'
 
 class pyBraille:
 
@@ -42,6 +33,7 @@ class pyBraille:
             self.photo = PhotoImage(file=os.path.dirname(os.path.realpath(__file__))+"/pyBrailleSmall.png")
         elif platform == 'linux' or platform == 'linux2':
             self.photo = PhotoImage(file=os.path.dirname(os.path.realpath(__file__))+"/pyBrailleSmall.gif")
+
         self.ppanel = Label(master, image = self.photo)
         self.ppanel.grid(row=0, column=0, rowspan = 10)
         
@@ -132,12 +124,13 @@ class pyBraille:
 
     def transcribe(self):
         if messagebox.askokcancel("Transcribe", "This will transcribe all files in:\n " + self.defaultPath + "\nPlease make sure all files are JPG format before continuing.\nThis may take a long time.", icon='warning'):
-            if t == 1:
+            
+            if t.get() == 1:
                 transcribeFile(os.path.basename(self.entryBox.get()))
-            elif t == 2:
+            elif t.get() == 2:
                 transcribeFileDocument(os.path.basename(self.entryBox.get()))
             else:
-                print("What the fuck how you get here")
+                print("This is T: " + str(self.t))
             self.refresh()
             
     def transcribeDelete(self):
@@ -163,9 +156,11 @@ class pyBraille:
         
 root = Tk()
 #root.geometry('{}x{}'.format(500, 200))
+
 entryVar = StringVar()
 t = IntVar()
 my_gui = pyBraille(root)
+
 if platform == 'win32' or platform == 'darwin':
     root.iconbitmap(os.path.dirname(os.path.realpath(__file__))+'/pyBraille.ico')
 elif platform == 'linux' or platform == 'linux2':
