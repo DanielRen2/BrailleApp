@@ -19,7 +19,7 @@ params = {'handwriting' : 'true'}
 
 uri_base = 'https://westcentralus.api.cognitive.microsoft.com'
 
-
+# Takes a file and converts it to text and save the braille mapping to txt file
 def readImage(fileName):
     # Replace the three dots below with the full file path to a JPEG image of a celebrity on your computer or network.
 
@@ -78,19 +78,8 @@ def readImage(fileName):
         print('Error:')
         print(e)
 
-
+# Reads all JPEG in file directory
 def transcribeFile(pathURL):
     data_list = {}
     for filename in glob.glob(os.path.join(pathURL, '*.jpeg')):
         readImage(filename)
-'''
-        with open(filename, 'rb') as f:
-            data_list[os.path.basename(filename)] = f.read()
-
-        
-    for key, value in data_list.items():
-        #print(key)
-        #print(value)
-        readImage(value, key)
-'''
-transcribeFile("./Images")
