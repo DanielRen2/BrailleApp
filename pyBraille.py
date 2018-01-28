@@ -140,7 +140,7 @@ class pyBraille:
             
     def send(self):
         if len(self.list_box.curselection()):
-            print(self.list_box.get(self.list_box.curselection()))
+            #print(self.list_box.get(self.list_box.curselection()))
             sc.sendBraille(rd.getWords(self.list_box.get(self.list_box.curselection())))
         else:
             self.label['Select a file first']

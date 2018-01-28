@@ -54,7 +54,7 @@ def readImage(fileName):
             # async operation that can take a variable amount of time depending on the length
             # of the text you want to recognize. You may need to wait or retry this GET operation.
 
-            print('\n Analyzing ' + os.path.basename(fileName) + ' Waiting 10 seconds to retrieve the recognized text.\n')
+            print('\nAnalyzing ' + os.path.basename(fileName) + ' Waiting 10 seconds to retrieve the recognized text.\n')
             time.sleep(10)
 
             # Execute the second REST API call and get the response.
@@ -87,5 +87,5 @@ def transcribeFile(pathURL):
         readImage(filename)
 
 
-    print("Finish Revewing the files")
+    print("Finish Reviewing the files")
     return

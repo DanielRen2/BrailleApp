@@ -20,12 +20,12 @@ def convertStringToCor(words):
 	# Convert the sentence via grade 2 into dot representation
 	# Set mode to ucBrl + dot
     
-    print("Converting to words... \n" + words + "\n")
+    print("Converting the image to words... \n" + words + "\n")
 
     asciiSymbols = louis.translate(['en-us-g2.ctb'],  words, mode=132)[0]
     returnArray = []
 
-    print("Resulting Braille : \n" + asciiSymbols + "\n")
+    print("Resulting Braille of the image : \n" + asciiSymbols + "\n")
 
     for character in asciiSymbols:
         

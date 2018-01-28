@@ -10,7 +10,7 @@ def getWords(filename):
         with open("./Transcribe/"+filename, 'r') as trans_file:
             for tex in trans_file:
                 result = tex.strip('[]').replace('\'', '').split(',')
-                print(result)
+                #print(result)
             trans_file.close()
     except IOError as e:
         print ("I/O error({0}): {1}").format(e.errno, e.strerror)
