@@ -21,7 +21,7 @@ class pyBraille:
         self.greet_button = Button(master, text="Connect", command=self.connect)
         self.greet_button.pack()
         
-        self.send_button = Button(master, text="Send", state=DISABLED, command=self.self)
+        self.send_button = Button(master, text="Send", state=DISABLED, command=self.send)
         self.send_button.pack()
 
         self.close_button = Button(master, text="Close", command=self.quitProg)
