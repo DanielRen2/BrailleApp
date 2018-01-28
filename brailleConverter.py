@@ -25,7 +25,7 @@ def convertStringToCor(words):
     asciiSymbols = louis.translate(['en-us-g2.ctb'],  words, mode=132)[0]
     returnArray = []
 
-    print("Resulting Braille : " + asciiSymbols + "\n")
+    print("Resulting Braille : \n" + asciiSymbols + "\n")
 
     for character in asciiSymbols:
         
