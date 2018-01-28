@@ -47,20 +47,26 @@ class pyBraille:
         self.connect_button = ttk.Button(master, text="Connect", command=self.connect, style = 'NuclearReactor.TButton')
         self.connect_button.grid(row=3,column=1, sticky=E+W,columnspan = 2)
         
-        self.labelDescription = Label(master, text = "Transcribe a Folder's Content's")
+        self.labelDescription = Label(master, text = "Transcribe a Folder's Contents")
         self.labelDescription.grid(row=4,column=1,sticky=E+W,columnspan = 2)
 
         self.label_file= Label(master, text = "Directory:")
         self.label_file.grid(row=5,column=1, sticky=W)
         
+        self.hand = Radiobutton(master, text = "Handwriting", variable = t, value=1)
+        self.hand.grid(row=6,column=1)
+        self.hand.select()
+        self.typed = Radiobutton(master, text = "Typed", variable = t, value=2)
+        self.typed.grid(row=6,column=2)
+
         self.buttonOpen = ttk.Button(master, text = "Transcribe", command=self.transcribe,style = 'NuclearReactor.TButton')
-        self.buttonOpen.grid(row=6,column=1,sticky=E+W,columnspan = 2)
+        self.buttonOpen.grid(row=7,column=1,sticky=E+W,columnspan = 2)
 
         self.buttonFile = ttk.Button(master, text = "Choose Directory", command = self.openDir, style = 'NuclearReactor.TButton')
-        self.buttonFile.grid(row=7,column=1,sticky=E+W,columnspan = 2)
+        self.buttonFile.grid(row=8,column=1,sticky=E+W,columnspan = 2)
         
         self.button_delete = ttk.Button(master, text = "Delete all Transcriptions", command = self.transcribeDelete, style = 'NuclearReactor.TButton')
-        self.button_delete.grid(row=8,column=1,sticky=E+W,columnspan = 2)
+        self.button_delete.grid(row=9,column=1,sticky=E+W,columnspan = 2)
         
         self.close_button = ttk.Button(master, text="Close", command=self.quitProg, style = 'NuclearReactor.TButton')
         self.close_button.grid(row=10,column=1, columnspan = 2, sticky=E+W)
@@ -76,26 +82,20 @@ class pyBraille:
 
         # === Third Column
         self.list_label = Label(master, text="Transcribed Files")
-        self.list_label.grid(row=1,column=3,sticky=E+W, columnspan=2)
+        self.list_label.grid(row=1,column=4,sticky=E+W, columnspan=2)
         
         self.button_refresh = ttk.Button(master, text = "Refresh Files", command = self.refresh, style = 'NuclearReactor.TButton')
-        self.button_refresh.grid(row=2,column=3,sticky=N+S,columnspan=2)
+        self.button_refresh.grid(row=2,column=4,sticky=N+S,columnspan=2)
         
         self.scrollbar = Scrollbar()
         self.scrollbar.grid(row=3, column=5, rowspan=6, sticky=N+S)
         
         self.list_box = Listbox(master, selectmode=SINGLE)
         self.list_box.config(yscrollcommand=self.scrollbar.set)
-        self.list_box.grid(row=3,column=3,sticky=N+S+E+W,rowspan=6,padx=20,columnspan=2)
-        
-        self.hand = Radiobutton(master, text = "Handwriting", variable = t, value=1)
-        self.hand.grid(row=9,column=3)
-        self.hand.select()
-        self.typed = Radiobutton(master, text = "Typed", variable = t, value=2)
-        self.typed.grid(row=9,column=4)
+        self.list_box.grid(row=3,column=4,sticky=N+S+E+W,rowspan=6,padx=20,columnspan=2)
         
         self.send_button = ttk.Button(master, text="Send", state=DISABLED, command=self.send, style = 'NuclearReactor.TButton')
-        self.send_button.grid(row=10,column=3, sticky=N+S, columnspan=2)
+        self.send_button.grid(row=10,column=4, sticky=N+S, columnspan=2)
 
     # === Actions
     
