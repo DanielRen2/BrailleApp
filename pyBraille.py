@@ -28,7 +28,7 @@ class pyBraille:
         self.master = master
         master.title("pyBraille")
         self.connected = False
-        self.defaultPath = os.path.dirname(os.path.realpath(__file__))+"\\Images\\"
+        self.defaultPath = os.path.dirname(os.path.realpath(__file__))+"/Images/"
 
         # === First Column
         self.label = Label(master, text="Disconnected")
@@ -107,11 +107,12 @@ class pyBraille:
 
     def transcribe(self):
         if messagebox.askokcancel("Transcribe", "This will transcribe all files in:\n " + self.defaultPath + "\nPlease make sure all files are JPG format before continuing.\nThis will overwrite previous transcripts of the same name", icon='warning'):
-            lambda: transcribeFile(os.path.basename(self.entryBox.get()))
+            #lambda: transcribeFile(os.path.basename(self.entryBox.get()))
+            transcribeFile(os.path.basename(self.entryBox.get()))
             self.refresh()
             
     def transcribeDelete(self):
-        if messagebox.askokcancel("Transcribe", "This will remove ALL files in:\n " + os.path.dirname(os.path.realpath(__file__))+"\\Transcribe\\" + "\nPlease make sure you want to delete all files before continuing.", icon='warning'):
+        if messagebox.askokcancel("Transcribe", "This will remove ALL files in:\n " + os.path.dirname(os.path.realpath(__file__))+"/Transcribe/" + "\nPlease make sure you want to delete all files before continuing.", icon='warning'):
             rd.removeTrans()
             self.refresh()
             

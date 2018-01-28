@@ -53,7 +53,7 @@ def readImage(fileName):
             # async operation that can take a variable amount of time depending on the length
             # of the text you want to recognize. You may need to wait or retry this GET operation.
 
-            print('\nHandwritten text submitted. Waiting 10 seconds to retrieve the recognized text.\n')
+            print('\n Analyzing ' + os.path.basename(fileName) + 'Waiting 10 seconds to retrieve the recognized text.\n')
             time.sleep(10)
 
             # Execute the second REST API call and get the response.
@@ -61,13 +61,11 @@ def readImage(fileName):
 
             # 'data' contains the JSON data. The following formats the JSON data for display.
             parsed = json.loads(response.text)
-            print ("Response:")
 
             imageText = ""
             for x in parsed['recognitionResult']['lines']:
                 imageText += x['text'] + " "
                 
-            print(imageText[1:-1].replace('\'','')
             file = open(textPath , "w")
             file.write(str(bC.convertStringToCor(imageText)))
             file.close
@@ -88,5 +86,5 @@ def transcribeFile(pathURL):
         readImage(filename)
 
 
-    print("Done Loading")
+    print("Finish Revewing the files")
     return
