@@ -80,7 +80,7 @@ def readImage(fileName):
 
 # Reads all JPEG in file directory
 def transcribeFile(pathURL):
-    data_list = {}
+
     for filename in glob.glob(os.path.join(pathURL, '*.jpeg')):
         readImage(filename)
 
