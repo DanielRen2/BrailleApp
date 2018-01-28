@@ -24,7 +24,7 @@ def readImage(fileName):
     # Replace the three dots below with the full file path to a JPEG image of a celebrity on your computer or network.
     print("Entering readImage function")
     try:
-        textPath = os.path.join('./Transcribe/', os.path.basename(fileName)[:-5] + ".txt")
+        textPath = os.path.join('./Transcribe/', os.path.splitext(os.path.basename(fileName))[0] + ".txt")
         
 
         if (not os.path.exists(textPath)):
@@ -84,4 +84,9 @@ def transcribeFile(pathURL):
     for filename in glob.glob(os.path.join(pathURL, '*.jpeg')):
         readImage(filename)
 
+    for filename in glob.glob(os.path.join(pathURL, '*.jpg')):
+        readImage(filename)
 
+
+    print("Done Loading")
+    return

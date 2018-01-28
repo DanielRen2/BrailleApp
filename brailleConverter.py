@@ -21,7 +21,10 @@ def convertStringToCor(words):
 	# Set mode to ucBrl + dot
 	asciiSymbols = louis.translate(['en-us-g2.ctb'],  words, mode=132)[0]
 	returnArray = []
-
+	print("=====")
+	print(words)
+	print(asciiSymbols)
+	print("=====")
 	for character in asciiSymbols:
 		
 		returnArray.append(CONST_DOTCODE[CONST_BRAILLES.index(character)])

@@ -107,8 +107,9 @@ entryBox.pack(side=BOTTOM, fill=X)
 
 buttonOpen = Button(bottomFrame, text = "Open", fg = "red", command=lambda: transcribeFile(os.path.basename(entryBox.get())))
 buttonOpen.pack()
-
+print("We are here")
 buttonFile = Button(topFrame, text = "...", command = openDir)
 buttonFile.pack(side = RIGHT)
 
 root.mainloop()
+print("Here")
