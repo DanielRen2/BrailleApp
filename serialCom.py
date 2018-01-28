@@ -24,15 +24,16 @@ def sendBraille(list):
     
     for l in list:
         parse = l.split('-')
-        print(parse)
+        #print(parse)
         parse.append('0')
         
         for p in parse:
             ser.write(p.encode())
-            print(p)
+            #print(p)
             ser.read()
             
-        ser.write('9'.encode())    
+    ser.write('0'.encode())
+    ser.write('9'.encode())    
         
 if __name__ == "__main__":
     connect("COM5")

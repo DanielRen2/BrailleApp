@@ -20,7 +20,7 @@ def convertStringToCor(words):
 	# Convert the sentence via grade 2 into dot representation
 	# Set mode to ucBrl + dot
     
-    print("Converting to words \n" + words + "\n")
+    print("Converting to words... \n" + words + "\n")
 
     asciiSymbols = louis.translate(['en-us-g2.ctb'],  words, mode=132)[0]
     returnArray = []

@@ -22,7 +22,7 @@ uri_base = 'https://westcentralus.api.cognitive.microsoft.com'
 # Takes a file and converts it to text and save the braille mapping to txt file
 def readImage(fileName):
     # Replace the three dots below with the full file path to a JPEG image of a celebrity on your computer or network.
-    print("Entering readImage function")
+
     try:
         textPath = os.path.join('./Transcribe/', os.path.splitext(os.path.basename(fileName))[0] + ".txt")
         
@@ -53,7 +53,7 @@ def readImage(fileName):
             # async operation that can take a variable amount of time depending on the length
             # of the text you want to recognize. You may need to wait or retry this GET operation.
 
-            print('\n Analyzing ' + os.path.basename(fileName) + 'Waiting 10 seconds to retrieve the recognized text.\n')
+            print('\n Analyzing ' + os.path.basename(fileName) + ' Waiting 10 seconds to retrieve the recognized text.\n')
             time.sleep(10)
 
             # Execute the second REST API call and get the response.
