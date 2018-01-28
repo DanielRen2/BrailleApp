@@ -90,6 +90,7 @@ class pyBraille:
         
         self.hand = Radiobutton(master, text = "Handwriting", variable = t, value=1)
         self.hand.grid(row=9,column=3)
+        self.hand.select()
         self.typed = Radiobutton(master, text = "Typed", variable = t, value=2)
         self.typed.grid(row=9,column=4)
         
@@ -123,8 +124,12 @@ class pyBraille:
 
     def transcribe(self):
         if messagebox.askokcancel("Transcribe", "This will transcribe all files in:\n " + self.defaultPath + "\nPlease make sure all files are JPG format before continuing.\nThis may take a long time.", icon='warning'):
-            #lambda: transcribeFile(os.path.basename(self.entryBox.get()))
-            transcribeFile(os.path.basename(self.entryBox.get()))
+            if t == 1:
+                transcribeFile(os.path.basename(self.entryBox.get()))
+            elif t == 2:
+                transcribeFileDocument(os.path.basename(self.entryBox.get()))
+            else:
+                print("What the fuck how you get here")
             self.refresh()
             
     def transcribeDelete(self):
