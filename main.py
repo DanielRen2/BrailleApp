@@ -1,5 +1,5 @@
 import tkinter as tk 
-from tkinter import filedialog
+from tkinter import ttk
 from tkinter import *
 from PIL import ImageTk, Image
 import os
@@ -90,6 +90,7 @@ def openDir():
 	print(name)
 
 root = Tk()
+
 entryVar = StringVar()
 topFrame = Frame(root, width = 500, height = 500)
 topFrame.pack()
@@ -98,18 +99,22 @@ bottomFrame = Frame(root, width = 1000, height = 1000)
 bottomFrame.pack(side=BOTTOM)
 
 
-labelDescription = Label(topFrame, text = "Open a file to read to text", fg = "blue")
+labelDescription = ttk.Label(topFrame, text = "Open a file to read to text", style = 'NuclearReactor.TButton')
 labelDescription.pack(side=TOP)
 
 entryBox = Entry(topFrame, textvariable = entryVar)
 entryBox.pack(side=BOTTOM, fill=X)
 
 
-buttonOpen = Button(bottomFrame, text = "Open", fg = "red", command=lambda: transcribeFile(os.path.basename(entryBox.get())))
+buttonOpen = ttk.Button(bottomFrame, text = "Open", command=lambda: transcribeFile(os.path.basename(entryBox.get())), style = 'NuclearReactor.TButton')
 buttonOpen.pack()
-print("We are here")
-buttonFile = Button(topFrame, text = "...", command = openDir)
-buttonFile.pack(side = RIGHT)
+b = ttk.Button(bottomFrame, text='Hello', style='NuclearReactor.TButton')
+#b['style'] = 'NuclearReactor.TButton'
+b.pack()
+"""
+b = ttk.Button()
+b['style']
+b.winfo_class()
+"""
 
 root.mainloop()
-print("Here")
