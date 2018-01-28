@@ -67,7 +67,7 @@ def readImage(fileName):
             for x in parsed['recognitionResult']['lines']:
                 imageText += x['text'] + " "
                 
-            print(imageText)
+            print(imageText[1:-1].replace('\'','')
             file = open(textPath , "w")
             file.write(str(bC.convertStringToCor(imageText)))
             file.close
