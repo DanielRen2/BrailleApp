@@ -18,9 +18,9 @@ def connect(port):
     except:
         return False
         
-def sendBraille():
+def sendBraille(list):
     #⠠⠓⠑⠇⠇⠕⠀⠠⠸⠺
-    list = ['6', '1-2-5', '1-5', '1-2-3', '1-2-3', '1-3-5', '', '6', '4-5-6', '2-4-5-6']
+    #list = ['6', '1-2-5', '1-5', '1-2-3', '1-2-3', '1-3-5', '', '6', '4-5-6', '2-4-5-6']
     
     for l in list:
         parse = l.split('-')
@@ -32,8 +32,8 @@ def sendBraille():
             print(p)
             ser.read()
             
-    sys.exit(0)
-
+        ser.write('9'.encode())    
+        
 if __name__ == "__main__":
     connect("COM5")
     sendBraille()

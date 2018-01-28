@@ -38,14 +38,19 @@ void setup() {
   pinMode(6, OUTPUT); //(1,1)
   pinMode(7, OUTPUT); //(1,2)
 
+  // Button
   pinMode(8, INPUT);
+
+  // Indicator
+  pinMode(10, OUTPUT);
 }
 
 void loop() {
+  digitalWrite(10, HIGH);
   while(true){
     byte readByte;
-
     if (Serial.available() > 0){
+        digitalWrite(10, LOW);
         while(Serial.available() < 1){}
         readByte = Serial.read();
         
@@ -71,6 +76,10 @@ void loop() {
               toggle(i);
             }
           }
+        }else if(readByte == '9'){
+          digitalWrite(10, HIGH);
+          while(Serial.available() < 1){}
+          digitalWrite(10, LOW);
         }
         Serial.write('2');
     }
