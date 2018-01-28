@@ -1,6 +1,6 @@
 # HackED 2018 Introduction
 
-Our team consisting of Kynan Ly, Alex Dong, Jayden Chan, and Daniel Ren, went on to make an afforable, accessible and assistive device for braille users. We would like to thank the sponsors and the UofA Computer Engineering club for funding and organizing HackED2018.
+Our team consisting of Kynan Ly, Alex Dong, Jayden Chan, and Daniel Ren, went on to make an afforable, accessible and assistive device for braille users. We would like to thank the sponsors and the UofA Computer Engineering Club for funding and organizing HackED2018.
 
 # Concept
 
@@ -8,7 +8,7 @@ By utilizing Microsoft's Computer Vision API and an open-source text to braille 
 
 # Restrictions
 
-The program was developed and tested on the Ubuuntu Linux environment. We can not guaruntee that this program is supported by other versions of Linux, Windows, or MacOS.
+The program was developed and tested on the Ubuutu LTS 14.0.4 Linux environment. We can not guaruntee that this program is supported by other versions of Linux, Windows, or MacOS.
 
 # License
 
