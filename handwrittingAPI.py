@@ -54,7 +54,7 @@ def readImage(fileName):
             # of the text you want to recognize. You may need to wait or retry this GET operation.
 
             print('\nHandwritten text submitted. Waiting 10 seconds to retrieve the recognized text.\n')
-            time.sleep(1)
+            time.sleep(10)
 
             # Execute the second REST API call and get the response.
             response = requests.request('GET', operationLocation, json=None, data=body, headers=requestHeaders, params=None)
@@ -83,3 +83,5 @@ def transcribeFile(pathURL):
     data_list = {}
     for filename in glob.glob(os.path.join(pathURL, '*.jpeg')):
         readImage(filename)
+
+transcribeFile("./Images")
