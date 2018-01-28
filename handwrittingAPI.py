@@ -81,7 +81,7 @@ def readImage(fileName):
 # Reads all JPEG in file directory
 def transcribeFile(pathURL):
 
-    for filename in os.listdir(pathURL):
-        if filename.endswith(".jpeg") or filename.endswith(".jpg"):
-            print(filename)
-            readImage(filename)
+    for filename in glob.glob(os.path.join(pathURL, '*.jpeg')):
+        readImage(filename)
+
+
