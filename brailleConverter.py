@@ -19,11 +19,11 @@ def convertStringToCor(words):
 
 	# Convert the sentence via grade 2 into dot representation
 	# Set mode to ucBrl + dot
-	asciiSymbols = louis.translateString(['en-us-g2.ctb'],  "hello", mode=132)
-
+	asciiSymbols = louis.translate(['en-us-g2.ctb'],  words, mode=132)[0]
 	returnArray = []
 
 	for character in asciiSymbols:
+		
 		returnArray.append(CONST_DOTCODE[CONST_BRAILLES.index(character)])
 
 	return returnArray

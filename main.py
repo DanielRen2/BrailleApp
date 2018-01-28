@@ -4,6 +4,7 @@ from tkinter import *
 from PIL import ImageTk, Image
 import os
 import http.client, urllib.request, urllib.parse, urllib.error, base64, requests, time, json
+from handwrittingAPI import *
 
 requestHeaders = {
     # Request headers.
@@ -12,11 +13,7 @@ requestHeaders = {
     # NOTE: Replace the "Ocp-Apim-Subscription-Key" value with a valid subscription key.
     'Ocp-Apim-Subscription-Key': 'a5ab297d53164f3c9f5d94f86bd4fc4e',
 }
-pathToFile = 'IMG_1992.jpg'
-with open(pathToFile, 'rb') as f:
-	body = f.read()
 params = {'handwriting' : 'true'}
-
 uri_base = 'https://westcentralus.api.cognitive.microsoft.com'
 
 def readImage(name):
@@ -87,7 +84,7 @@ def askDirect():
 		var.set(name)
 
 def openDir():
-	name = filedialog.askopenfilename()
+	name = filedialog.askdirectory()
 	print("Directory Name")
 	entryVar.set(name)
 	print(name)
@@ -108,7 +105,7 @@ entryBox = Entry(topFrame, textvariable = entryVar)
 entryBox.pack(side=BOTTOM, fill=X)
 
 
-buttonOpen = Button(bottomFrame, text = "Open", fg = "red", command=lambda: readImage(os.path.basename(entryBox.get())))
+buttonOpen = Button(bottomFrame, text = "Open", fg = "red", command=lambda: transcribeFile(os.path.basename(entryBox.get())))
 buttonOpen.pack()
 
 buttonFile = Button(topFrame, text = "...", command = openDir)
