@@ -25,33 +25,33 @@ class pyBraille:
         self.master = master
         master.title("pyBraille")
 
-        self.label = Label(master, text="Disconnected")
+        self.label = Label(master, text="Disconnected").grid(row=0,column=0)
         self.label.pack()
         
-        self.port_box = Text(root, height = 1, width = 10)
+        self.port_box = Text(root, height = 1, width = 10).grid(row=0,column=0)
         self.port_box.pack()
         self.port_box.insert(END, "COM5")
 
-        self.greet_button = Button(master, text="Connect", command=self.connect)
-        self.greet_button.pack()
+        self.connect_button = Button(master, text="Connect", command=self.connect).grid(row=0,column=0)
+        self.connect_button.pack()
         
-        self.send_button = Button(master, text="Send", state=DISABLED, command=self.send)
+        self.send_button = Button(master, text="Send", state=DISABLED, command=self.send).grid(row=0,column=0)
         self.send_button.pack()
 
-        self.close_button = Button(master, text="Close", command=self.quitProg)
+        self.close_button = Button(master, text="Close", command=self.quitProg).grid(row=0,column=0)
         self.close_button.pack()
 
-        self.labelDescription = Label(master, text = "Open a file to read to text", fg = "blue")
+        self.labelDescription = Label(master, text = "Open a file to read to text", fg = "blue").grid(row=0,column=1)
         self.labelDescription.pack(side=RIGHT)
 
-        self.entryBox = Entry(master, textvariable = entryVar)
+        self.entryBox = Entry(master, textvariable = entryVar).grid(row=0,column=1)
         self.entryBox.pack(side=RIGHT, fill=X)
 
 
-        self.buttonOpen = Button(master, text = "Open", fg = "red", command=lambda: transcribeFile(os.path.basename(self.entryBox.get())))
+        self.buttonOpen = Button(master, text = "Open", fg = "red", command=lambda: transcribeFile(os.path.basename(self.entryBox.get()))).grid(row=0,column=1)
         self.buttonOpen.pack()
 
-        self.buttonFile = Button(master, text = "...", command = self.openDir)
+        self.buttonFile = Button(master, text = "...", command = self.openDir).grid(row=0,column=1)
         self.buttonFile.pack(side = RIGHT)
 
     def connect(self):
@@ -75,8 +75,6 @@ class pyBraille:
         entryVar.set(name)
         print(name)
         
-
-            
 root = Tk()
 entryVar = StringVar()
 my_gui = pyBraille(root)

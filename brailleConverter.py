@@ -19,14 +19,11 @@ def convertStringToCor(words):
 
 	# Convert the sentence via grade 2 into dot representation
 	# Set mode to ucBrl + dot
-	asciiSymbols = louis.translate(['en-us-g2.ctb'],  words, mode=132)[0]
-	returnArray = []
-	print("=====")
-	print(words)
-	print(asciiSymbols)
-	print("=====")
-	for character in asciiSymbols:
-		
-		returnArray.append(CONST_DOTCODE[CONST_BRAILLES.index(character)])
+    asciiSymbols = louis.translate(['en-us-g2.ctb'],  words, mode=132)[0]
+    returnArray = []
 
-	return returnArray
+    for character in asciiSymbols:
+        
+        returnArray.append(CONST_DOTCODE[CONST_BRAILLES.index(character)])
+
+    return returnArray
