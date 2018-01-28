@@ -15,7 +15,8 @@ requestHeaders = {
     # NOTE: Replace the "Ocp-Apim-Subscription-Key" value with a valid subscription key.
     'Ocp-Apim-Subscription-Key': 'a5ab297d53164f3c9f5d94f86bd4fc4e',
 }
-params = {'handwriting' : 'true'}
+#params = {'handwriting' : 'true'}
+
 
 uri_base = 'https://westcentralus.api.cognitive.microsoft.com'
 
