@@ -22,13 +22,13 @@ uri_base = 'https://westcentralus.api.cognitive.microsoft.com'
 # Takes a file and converts it to text and save the braille mapping to txt file
 def readImage(fileName):
     # Replace the three dots below with the full file path to a JPEG image of a celebrity on your computer or network.
-
+    print("Entering readImage function")
     try:
         textPath = os.path.join('./Transcribe/', os.path.basename(fileName)[:-5] + ".txt")
         
 
         if (not os.path.exists(textPath)):
-
+            print("Attempting to read file name")
             with open(fileName, 'rb') as f:
                 body = f.read()
 
@@ -37,7 +37,7 @@ def readImage(fileName):
             #
             # This executes the first REST API call and gets the response.
             response = requests.request('POST', uri_base + '/vision/v1.0/RecognizeText', json=None, data=body, headers=requestHeaders, params=params)
-
+            print("Complete API Request")
             # Success is indicated by a status of 202.
             if response.status_code != 202:
                 # if the first REST API call was not successful, display JSON data and exit.
@@ -54,7 +54,7 @@ def readImage(fileName):
             # of the text you want to recognize. You may need to wait or retry this GET operation.
 
             print('\nHandwritten text submitted. Waiting 10 seconds to retrieve the recognized text.\n')
-            time.sleep(1)
+            time.sleep(10)
 
             # Execute the second REST API call and get the response.
             response = requests.request('GET', operationLocation, json=None, data=body, headers=requestHeaders, params=None)
@@ -80,6 +80,8 @@ def readImage(fileName):
 
 # Reads all JPEG in file directory
 def transcribeFile(pathURL):
-    data_list = {}
-    for filename in glob.glob(os.path.join(pathURL, '*.jpeg')):
-        readImage(filename)
+
+    for filename in os.listdir(pathURL):
+        if filename.endswith(".jpeg") or filename.endswith(".jpg"):
+            print(filename)
+            readImage(filename)
